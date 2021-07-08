@@ -63,12 +63,17 @@ main{
     transform: perspective(1000px);
     align-items: center;
     text-shadow: 1px 1px 9px rgba(51,51,51,0.25);
-    background: linear-gradient(198deg, #ffffff, #cecece);
-    background-size: 400% 400%;
+    background: 
+    linear-gradient(90deg,rgba(150,150,150,0.3) 33%,rgba(255,255,255,0.3) 50%,rgba(150,150,150,0.3) 66%)
+    white;
+  	background-size:300% 100%;
+  	animation: shining 2s infinite;
+}
 
-    -webkit-animation: colorfade 9s ease infinite;
-    -moz-animation: colorfade 9s ease infinite;
-    animation: colorfade 9s ease infinite;
+@keyframes shining {
+  0% {
+    background-position: right;    
+  }
 }
 
 .server:hover{
