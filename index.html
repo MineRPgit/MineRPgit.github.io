@@ -23,18 +23,18 @@
             <img src="assets/logo.png" id="logo" class="smtilt"/>
 
             <div id="servers">
-                <div id="wlon" class="server smtilt" alt="5.9.110.206:25845">
+                <div id="wlon" class="server smtilt" alt="5.9.110.206:25845" counter="true">
                     🟩 Whitelist On<br>
                     <div class="counter">
-                        <span data-playercounter-ip="5.9.110.206:25845">-</span>/50
+                        <span id="wloncounter" data-playercounter-ip="5.9.110.206:25845">-</span>/50
                     </div>
                     <img class="ico" src="/assets/info_ico.svg">
                 </div>            
     
-                <div id="wloff" class="server smtilt" alt="wl.minerp.pl">
+                <div id="wloff" class="server smtilt" alt="wl.minerp.pl" counter="true">
                     🟥 Whitelist Off<br>
                     <div class="counter">
-                        <span data-playercounter-ip="wl.minerp.pl">-</span>/75
+                        <span id="wloffcounter" data-playercounter-ip="wl.minerp.pl">-</span>/75
                     </div>
                     <img class="ico" src="/assets/info_ico.svg">
                 </div>
@@ -47,8 +47,36 @@
         </main>
 
         <script>
-            $("#wlon").click(function(){$(this).css("font-size","0.6rem");$(this).html("Adres serwera Minecraft: 5.9.110.206:25845<br/>Adres serwera Mumble: minerp.mumble.gg:10005")});
-            $("#wloff").click(function(){$(this).css("font-size","0.6rem");$(this).html("Adres serwera Minecraft: wl.minerp.pl<br/>Adres serwera Mumble: minerp.mumble.gg:10005")});
+            let wlonnum = "-",
+                wloffnum = "-";
+
+            $("#wlon").click(
+                function(){
+                    if($(this).attr("counter")==="true"){
+                        let wlontext = $("#wloncounter").text();
+                        if(wlontext>0)wlonnum = wlontext;
+                        $(this).css("font-size","0.6rem");
+                        $(this).html("Adres serwera Minecraft: 5.9.110.206:25845<br/>Adres serwera Mumble: minerp.mumble.gg:10005");
+                        $(this).attr("counter","false");
+                    } else {
+                        $(this).css("font-size","1rem");
+                        $(this).html(`🟩 Whitelist On<br><div class="counter"><span data-playercounter-ip="5.9.110.206:25845">${wlonnum}</span>/50</div><img class="ico" src="/assets/info_ico.svg">`);
+                        $(this).attr("counter","true");
+                    }});
+            
+            $("#wloff").click(
+                function(){
+                    if($(this).attr("counter")==="true"){
+                        let wlofftext = $("#wloffcounter").text();
+                        if(wlofftext>0)wloffnum = wlofftext;
+                        $(this).css("font-size","0.6rem");
+                        $(this).html("Adres serwera Minecraft: wl.minerp.pl<br/>Adres serwera Mumble: minerp.mumble.gg:10005");
+                        $(this).attr("counter","false");
+                    } else {
+                        $(this).css("font-size","1rem");
+                        $(this).html(`🟥 Whitelist Off<br><div class="counter"><span data-playercounter-ip="wl.minerp.pl">${wloffnum}</span>/75</div><img class="ico" src="/assets/info_ico.svg">`);
+                        $(this).attr("counter","true");
+                    }});
         </script>
     </body>
 </html>
