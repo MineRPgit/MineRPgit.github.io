@@ -55,7 +55,7 @@
                 function(){
                     if($(this).attr("counter")==="true"){
                         let wlontext = $("#wloncounter").text();
-                        if(wlontext>0)wlonnum = wlontext;
+                        if(!isNaN(parseInt(wlontext)))wlonnum = wlontext;
                         $(this).css("font-size","0.6rem");
                         $(this).html("Adres serwera Minecraft: on.minerp.pl<br/>Adres serwera Mumble: minerp.mumble.gg:10005");
                         $(this).attr("counter","false");
@@ -69,7 +69,7 @@
                 function(){
                     if($(this).attr("counter")==="true"){
                         let wlofftext = $("#wloffcounter").text();
-                        if(wlofftext>0)wloffnum = wlofftext;
+                        if(!isNaN(parseInt(wlofftext)))wloffnum = wlofftext;
                         $(this).css("font-size","0.6rem");
                         $(this).html("Adres serwera Minecraft: off.minerp.pl<br/>Adres serwera Mumble: minerp.mumble.gg:10005");
                         $(this).attr("counter","false");
